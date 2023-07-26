@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-* _putchar - the function name
+* _putchar - using this to redirect stderr
 * @c: parameter of type char .
 * Return: int .
 */

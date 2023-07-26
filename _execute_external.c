@@ -11,18 +11,19 @@ int execute_external_command(char *line, char **array,
 char **argv, int cmdnum)
 {
 	struct stat *st;
-	int status;
+	int isOnPath = -1, status;
 
 	st = malloc(sizeof(struct stat));
 	if (stat(array[0], st) == -1)
 	{
-		free(st);
-		_print_f("%s: %d: %s: No such file or directory\n",
-		argv[0], cmdnum, array[0]);
-		return (0);
+		isOnPath = _chck_if_path(array, cmdnum);
+		if (isOnPath == 0)
+		{
+			free(st);
+			return (0);
+		}
 	}
-	status = _executor(line, array, argv, cmdnum, st);
-	free(st);
-	return (status);
-
+		status = _executor(line, array, argv, cmdnum, st);
+		free(st);
+		return (status);
 }
