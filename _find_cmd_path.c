@@ -14,7 +14,7 @@ int _look_in_path(char *str, char **tokens, int cmdnum)
 	DIR *mydir;
 	int dest = 0, isOnPath = -1;
 
-	str = strtok(str, ":");
+	str = my_stritk(str, ":");
 	while (str != NULL  && dest != 1)
 	{
 		mydir = opendir(str);
@@ -35,7 +35,7 @@ int _look_in_path(char *str, char **tokens, int cmdnum)
 		closedir(mydir);
 		if (dest == 0)
 		{
-			str = strtok(NULL, ":");
+			str = my_stritk(NULL, ":");
 		}
 	}
 	return (isOnPath);

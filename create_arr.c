@@ -16,14 +16,14 @@ char **create_array_from_line(char *line, int num_tokens)
 		return (NULL);
 	}
 	otherstr = _strdup(line);
-	thirdstr = strtok(otherstr, " \t\r\n\f\v");
+	thirdstr = my_stritk(otherstr, " \t\r\n\f\v");
 	if (thirdstr == NULL)
 	{
 		free(array);
 		free(otherstr);
 		return (NULL);
 	}
-	for (; thirdstr != NULL; thirdstr = strtok(NULL, " \t\r\n\f\v"))
+	for (; thirdstr != NULL; thirdstr = my_stritk(NULL, " \t\r\n\f\v"))
 	array[x++] = thirdstr;
 	array2 = malloc(sizeof(char *) * (num_tokens + 1));
 	if (array2 == NULL)
