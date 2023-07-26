@@ -20,14 +20,12 @@ int handle_line(char *line, int num_tokens, char **argv, int cmdnum)
 	isBuiltin = _handle_shell_inbuilt(line, array2);
 	if (isBuiltin == 0)
 	{
-		status = execute_external_command(line, array2, argv, cmdnum);
-		free(line);
+		status = execute_external_command(array2, argv, cmdnum);
 		free_array(array2);
 		return (status);
 	}
 	else
 	{
-		free(line);
 		free_array(array2);
 		return (0);
 	}
