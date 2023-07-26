@@ -6,7 +6,6 @@
   * @cmdnum: parameter of type int .
   * Return: int .
  */
-
 int _chck_if_path(char **tokens, int cmdnum)
 {
 	int i = 0, isOnPath = -1;
@@ -17,8 +16,8 @@ int _chck_if_path(char **tokens, int cmdnum)
 		if (_str_n_cmp("PATH=", environ[i], 5) == 0)
 		{
 			path = _strdup(environ[i]);
-			strtok(path, "=");
-			str = strtok(NULL, "=");
+			my_stritk(path, "=");
+			str = my_stritk(NULL, "=");
 			isOnPath = _look_in_path(str, tokens, cmdnum);
 			break;
 		}
