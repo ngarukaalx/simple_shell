@@ -5,6 +5,7 @@
 * @num_tokens: parameter of type int .
 * Return: char **.
 */
+
 char **create_array_from_line(char *line, int num_tokens)
 {
 	char *otherstr = NULL, *thirdstr = NULL, **array2 = NULL, **array = NULL;

@@ -51,4 +51,6 @@ int _look_in_path(char *str, char **tokens,int cmdnum);
 int _str_cmp(char *s1, char *s2);
 int _str_n_cmp(char *s1, char *s2, int n);
 int _chck_if_path(char **tokens, int cmdnum);
+void _puts_stri(char *smstr);
+int _handle_shell_inbuilt(char *line, char **array);
 #endif
