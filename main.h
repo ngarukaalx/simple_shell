@@ -58,4 +58,5 @@ void _puts_stri(char *smstr);
 int _handle_shell_inbuilt(char *line, char **array);
 int non_interactive_mode(char **argv);
 int interactive_mode(char **argv);
+char *my_stritk(char *str, const char *delim);
 #endif
