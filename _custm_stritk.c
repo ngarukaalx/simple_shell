@@ -1,11 +1,10 @@
 #include "main.h"
-
 /**
-  * my_stritk - the function name
-  * @str: parameter of type char *.
-  * @delim: parameter of type const char *.
-  * Return: char *.
- */
+* my_stritk - Tokenizes a string by a delimiter
+* @str: The string to tokenize
+* @delim: The delimiter by which to split the string
+* Return: Pointer to the start of the next token
+*/
 char *my_stritk(char *str, const char *delim)
 {
 	static char *src;
@@ -14,6 +13,10 @@ char *my_stritk(char *str, const char *delim)
 	if (str != NULL)
 	{
 		src = str;
+	}
+	if (src == NULL)
+	{
+		return (NULL);
 	}
 	p = strpbrk(src, delim);
 	if (p != NULL)
