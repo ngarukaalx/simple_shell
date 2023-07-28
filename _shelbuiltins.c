@@ -3,6 +3,8 @@
 * _handle_shell_inbuilt - the function name
 * @line: parameter of type char *.
 * @array: parameter of type char **.
+* @argv:number of arguments
+* @env:pointer to environment variable
 * Return: int .
 */
 int _handle_shell_inbuilt(char *line, char **array,
