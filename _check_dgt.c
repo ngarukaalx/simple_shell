@@ -19,3 +19,4 @@ int digit_checker(char *arg)
 	}
 	return (0);
 }
+

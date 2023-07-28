@@ -8,7 +8,8 @@
  * file permissions before execution)
  * Return: Integer indicating the status of execution
  */
-int _executor(char **array, char **argv, int cmdnum, struct stat *st)
+int _executor(char **array, char **argv,
+int cmdnum, struct stat *st)
 {
 	pid_t child_pid;
 	int status = 0;

@@ -72,6 +72,7 @@ void my_unsetenv(char *name, Environment *env)
 				&& (env->my_environ[i])[_strlen(name)] == '=')
 		{
 			free(env->my_environ[i]);
+			env->my_environ[i] = NULL;
 			shift = 1;
 		}
 	}
@@ -86,7 +87,10 @@ void free_my_environ(Environment *env)
 	int i;
 
 	for (i = 0; env->my_environ[i] != NULL; i++)
-	free(env->my_environ[i]);
+	{
+		free(env->my_environ[i]);
+		env->my_environ[i] = NULL;
+	}
 	free(env->my_environ);
 	env->my_environ = NULL;
 	env->alloc_len = 0;

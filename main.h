@@ -27,12 +27,22 @@ typedef struct format
 
 } format;
 #define BUFF_SIZE 4096
+
+/**
+* struct Environment - struct for env copy and len
+* @my_environ: copy of environ
+* @alloc_len: length of env copy
+*/
+typedef struct Environment
+{
+char **my_environ;
+int alloc_len;
+} Environment;
 ssize_t my_getline(char **lineptr, size_t *n, int fd);
-char * _str_n_cpy(char *dest, const char *src, size_t n);
+char *_str_n_cpy(char *dest, const char *src, size_t n);
 int _putchar(char c);
 int _strlen(char *s);
 int _print_f(const char *frmt, ...);
-
 int _count_token(char *line);
 int _pr_str(va_list *args);
 char *_strdup(char *str);
@@ -45,18 +55,29 @@ int execute_external_command(char **array,
 char **argv, int cmdnum);
 char *_str_cpy(char *dest, char *src);
 char *_str_cat(char *dest, char *src);
-int handle_line(char *line, int num_tokens, char **argv, int cmdnum);
+int handle_line(char *line, int num_tokens,
+char **argv, int cmdnum, Environment *env);
 int _executor(char **array, char **argv,
 int cmdnum, struct stat *st);
-void _run_path_command(char *s, char **tokens,int cmdnum);
+void _run_path_command(char *s, char **tokens, int cmdnum);
 void _path_comand_run(char *pthstr, char **tokens, int cmdnum);
-int _look_in_path(char *str, char **tokens,int cmdnum);
+int _look_in_path(char *str, char **tokens, int cmdnum);
 int _str_cmp(char *s1, char *s2);
 int _str_n_cmp(char *s1, char *s2, int n);
 int _chck_if_path(char **tokens, int cmdnum);
 void _puts_stri(char *smstr);
-int _handle_shell_inbuilt(char *line, char **array);
-int non_interactive_mode(char **argv);
-int interactive_mode(char **argv);
-char *my_stritk(char *str, const char *delim);
+int _handle_shell_inbuilt(char *line, char **array,
+char **argv, Environment *env);
+int non_interactive_mode(char **argv, Environment *env);
+int interactive_mode(char **argv, Environment *env);
+int digit_checker(char *arg);
+void copy_environ(Environment *env);
+void my_setenv(char *name, char *value, Environment *env);
+void my_unsetenv(char *name, Environment *env);
+void free_my_environ(Environment *env);
+void print_environment(Environment *env);
+int _handle_exit(char **array);
+int _exi_stat_(char **array);
+int handle_unset_env(char **array, Environment *env);
+int handle_set_env(char **array, Environment *env);
 #endif
