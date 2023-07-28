@@ -5,21 +5,14 @@
 * @argv: parameter of type char **.
 * Return: int .
 */
-
-
 int main(int argc, char **argv)
 {
-	int is_interactivemode, retun_val;
-	Environment env;
+	int is_interactivemode;
 
-	copy_environ(&env);
 	is_interactivemode = isatty(STDIN_FILENO);
 	if (is_interactivemode == 0 && argc == 1)
 	{
-		return (non_interactive_mode(argv, &env));
+		return (non_interactive_mode(argv));
 	}
-	retun_val = interactive_mode(argv, &env);
-	free_my_environ(&env);
-	return (retun_val);
-
+	return (interactive_mode(argv));
 }

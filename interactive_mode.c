@@ -3,15 +3,14 @@
 /**
 * interactive_mode - the function name
 * @argv: parameter of type char **.
-* @env: environment copy.
 * Return: int .
 */
-int interactive_mode(char **argv, Environment *env)
+int interactive_mode(char **argv)
 {
 	char *line = NULL;
 	size_t str_len = BUFF_SIZE;
 	ssize_t x;
-	int tokencount = 0, cmdnum = 1, status = 0;
+	int tokencount = 0, cmdnum = 1;
 
 	while (1)
 	{
@@ -25,11 +24,11 @@ int interactive_mode(char **argv, Environment *env)
 			break;
 		}
 		tokencount = _count_token(line);
-		status = handle_line(line, tokencount, argv, cmdnum, env);
+		handle_line(line, tokencount, argv, cmdnum);
 		cmdnum++;
 		free(line);
 		line = NULL;
 		str_len = BUFF_SIZE;
 	}
-	return (status);
+	return (EXIT_SUCCESS);
 }
