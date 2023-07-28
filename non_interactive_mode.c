@@ -11,7 +11,7 @@ int non_interactive_mode(char **argv, Environment *env)
 	char *line = NULL;
 	size_t str_len = BUFF_SIZE;
 	ssize_t y;
-	int status, tokencount = 0, cmdnum = 1;
+	int status = 0, tokencount = 0, cmdnum = 1;
 
 	while ((y = my_getline(&line, &str_len, STDIN_FILENO)) > 0)
 	{
