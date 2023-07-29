@@ -1,14 +1,6 @@
 #include "main.h"
-/**
- * _executor - Executes a command or a series of commands
- * @array: An array of command line arguments
- * @argv: An array of arguments passed to the main program
- * @cmdnum: The command number in the array of command line arguments
- * @st: A pointer to a stat structure (used to check
- * file permissions before execution)
- * Return: Integer indicating the status of execution
- */
-int _executor(char **array, char **argv,
+
+int _executor(char *line, char **array, char **argv,
 int cmdnum, struct stat *st)
 {
 	pid_t child_pid;
@@ -19,6 +11,7 @@ int cmdnum, struct stat *st)
 	{
 		free(st);
 		free_array(array);
+		free(line);
 		return (0);
 	}
 	if (child_pid == 0)
@@ -28,6 +21,7 @@ int cmdnum, struct stat *st)
 			free(st);
 			_print_f("%s: %d: %s: not found\n", argv[0], cmdnum, array[0]);
 			free_array(array);
+			free(line);
 			_exit(-1);
 		}
 	}

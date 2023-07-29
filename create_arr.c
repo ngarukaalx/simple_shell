@@ -5,6 +5,7 @@
 * @num_tokens: parameter of type int .
 * Return: char **.
 */
+
 char **create_array_from_line(char *line, int num_tokens)
 {
 	char *otherstr = NULL, *thirdstr = NULL, **array2 = NULL, **array = NULL;
@@ -13,6 +14,7 @@ char **create_array_from_line(char *line, int num_tokens)
 	array = malloc(sizeof(char *) * (num_tokens));
 	if (array == NULL)
 	{
+		free(line);
 		return (NULL);
 	}
 	otherstr = _strdup(line);
@@ -20,21 +22,23 @@ char **create_array_from_line(char *line, int num_tokens)
 	if (thirdstr == NULL)
 	{
 		free(array);
+		free(line);
 		free(otherstr);
 		return (NULL);
 	}
 	for (; thirdstr != NULL; thirdstr = strtok(NULL, " \t\r\n\f\v"))
-	array[x++] = thirdstr;
+		array[x++] = thirdstr;
 	array2 = malloc(sizeof(char *) * (num_tokens + 1));
 	if (array2 == NULL)
 	{
 		perror("Error: ");
+		free(line);
 		free(array);
 		free(otherstr);
 		return (NULL);
 	}
 	for (x = 0; x < num_tokens; x++)
-	array2[x] = _strdup(array[x]);
+		array2[x] = _strdup(array[x]);
 	array2[x] = NULL;
 	free(otherstr);
 	free(array);

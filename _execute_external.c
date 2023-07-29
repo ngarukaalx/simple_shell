@@ -1,12 +1,14 @@
 #include "main.h"
 /**
 * execute_external_command - executes an external command
+*@line: pointer to char from input
 * @array: array of arguments
 *@argv: pointer to main second argument
 *@cmdnum: count of command
 * Return: 0 on success, 1 on failure
 */
-int execute_external_command(char **array,
+
+int execute_external_command(char *line, char **array,
 char **argv, int cmdnum)
 {
 	struct stat *st;
@@ -22,7 +24,7 @@ char **argv, int cmdnum)
 			return (0);
 		}
 	}
-		status = _executor(array, argv, cmdnum, st);
+		status = _executor(line, array, argv, cmdnum, st);
 		free(st);
 		return (status);
 }

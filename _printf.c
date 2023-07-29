@@ -8,7 +8,6 @@ int _print_f(const char *frmt, ...)
 {
 	int x = 0, count = 0, j = 0;
 	va_list args;
-
 format  frmtarr[] = {
 {"%", _check_frmt},
 {"\\", _check_frmt},
@@ -21,13 +20,11 @@ format  frmtarr[] = {
 			{
 				count += frmtarr[0].type(&args, frmt, x);
 				if (count == -1)
-				{
 					return (-1);
-				}
 				j += count;
 				x++;
 				while (frmt[x] == ' ')
-				x++;
+					x++;
 				count = 1;
 			}
 			if (count == 0)
